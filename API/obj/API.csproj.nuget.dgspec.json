@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\SocialNetwork\\API\\API.csproj": {}
+    "C:\\SocialNetwork\\api\\API.csproj": {}
   },
   "projects": {
-    "c:\\SocialNetwork\\API\\API.csproj": {
+    "C:\\SocialNetwork\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\SocialNetwork\\API\\API.csproj",
+        "projectUniqueName": "C:\\SocialNetwork\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\SocialNetwork\\API\\API.csproj",
+        "projectPath": "C:\\SocialNetwork\\api\\API.csproj",
         "packagesPath": "C:\\Users\\alons\\.nuget\\packages\\",
-        "outputPath": "c:\\SocialNetwork\\API\\obj\\",
+        "outputPath": "C:\\SocialNetwork\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alons\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,6 +20,7 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +40,8 @@
           "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
             },

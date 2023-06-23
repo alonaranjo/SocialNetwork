@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f2XGxc9b4L/06NwYSsG/jrWdALZBg2a18YLj/7v2V/d0G3s6HPqrxUBz01lvq7gZmpkPM/2KPJ2uVUL32SZjWw==",
+  "dgSpecHash": "6Rwxx3JPOCMuVgz5PUIrcGHM1szvV/IeUPs4LAFbWxwp+TIYZtfMH8AHVPq/pR4Tw7dgHQV8cqAyEzhd7aQXVg==",
   "success": true,
-  "projectFilePath": "c:\\SocialNetwork\\API\\API.csproj",
+  "projectFilePath": "C:\\SocialNetwork\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alons\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\alons\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.5\\microsoft.data.sqlite.core.7.0.5.nupkg.sha512",
