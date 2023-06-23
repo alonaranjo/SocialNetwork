@@ -477,5 +477,6 @@ $RECYCLE.BIN/
 *.lnk
 API/appsettings.json
 API/socialapp.db
-API/bin/Debug/net7.0/API.dll
-API/bin/Debug/net7.0/API.pdb
+# Ignore any files in /bin and /obj Folders
+**/bin/*
+**/obj/*
