@@ -5,6 +5,7 @@ using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace API.Controllers
 {
@@ -34,6 +35,28 @@ namespace API.Controllers
             _context.Users.Add(user);
            await _context.SaveChangesAsync();
            return user;
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUser>> Login(LoginDto loginDto)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
+            if(user == null)
+            {
+                return Unauthorized("Invalid UserName");
+            }
+            
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var computedPassword = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            for(int i = 0; i < computedPassword.Length; i++)
+            {
+                if(computedPassword[i] != user.PasswordHash[i])
+                {
+                    return Unauthorized("Invalid Password");
+                }
+            }
+           
+            return user;
         }
 
         private async Task<bool> UserExists(string username) 

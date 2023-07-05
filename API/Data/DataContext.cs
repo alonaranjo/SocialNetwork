@@ -8,6 +8,11 @@ namespace API.Data
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AppUser>(entity => entity.HasIndex(e => e.UserName).IsUnique());
+        }
 
         public DbSet<AppUser> Users { get; set; }
     }
