@@ -9,22 +9,11 @@ import { User } from './_models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Social Network';
-  users: any;
-
-  constructor(private http: HttpClient, private accountService: AccountService){ }
+  title = 'Social Network'; 
+  constructor(private accountService: AccountService){ }
   
   ngOnInit(): void { 
-    this.getUsers();
     this.setCurrentUser();
-  }
-
-  getUsers(){
-    this.http.get("http://localhost:5000/api/users").subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error),
-      complete: () => console.log("Reques has completed")
-    });
   }
 
   setCurrentUser(){

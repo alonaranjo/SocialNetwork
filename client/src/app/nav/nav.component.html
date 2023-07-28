@@ -3,7 +3,7 @@
       <a class="navbar-brand" 
          href="#">Social Network App</a>        
       <ul class="navbar-nav me-auto mb-2 mb-md-0" 
-          *ngIf="loggedIn" >
+          *ngIf="accountService.currentUser$ | async" >
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Matches</a>
         </li>
@@ -13,13 +13,13 @@
         <li class="nav-item">
             <a class="nav-link">Messages</a>
         </li>
-        <li class="nav-item" (click)="logout()">
+        <li class="nav-item" (click)="accountService.logout()">
             <a class="nav-link">Logout</a>
         </li>            
     </ul>   
     <div class="nav-item dropdown" 
          dropdown 
-         *ngIf="loggedIn">
+         *ngIf="accountService.currentUser$ | async">
         <a class="nav-link dropdown-toggle" 
             dropdownToggle 
             href="#" 
@@ -29,17 +29,17 @@
             aria-haspopup="true" 
             aria-expanded="false"
             >
-            Welcome {{ username }}
+            Welcome 
         </a>
         <div class="dropdown-menu" 
              aria-labelledby="navbarDropdown" 
              *dropdownMenu
             >
             <a class="dropdown-item">Edit Profile</a>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
+            <a class="dropdown-item" (click)="accountService.logout()">Logout</a>
         </div>
     </div>                   
-    <form *ngIf="!loggedIn" 
+    <form *ngIf="!(accountService.currentUser$ | async)" 
           #loginForm="ngForm" 
           class="d-flex" 
           (ngSubmit)="login()" 
