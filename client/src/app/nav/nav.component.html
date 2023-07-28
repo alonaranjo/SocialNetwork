@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand" 
+         href="#">Social Network App</a>        
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" 
+          *ngIf="loggedIn" >
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Matches</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Lists</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Messages</a>
+        </li>
+        <li class="nav-item" (click)="logout()">
+            <a class="nav-link">Logout</a>
+        </li>            
+    </ul>   
+    <div class="nav-item dropdown" 
+         dropdown 
+         *ngIf="loggedIn">
+        <a class="nav-link dropdown-toggle" 
+            dropdownToggle 
+            href="#" 
+            id="navbarDropdown" 
+            role="button" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false"
+            >
+            Welcome {{ username }}
+        </a>
+        <div class="dropdown-menu" 
+             aria-labelledby="navbarDropdown" 
+             *dropdownMenu
+            >
+            <a class="dropdown-item">Edit Profile</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+    </div>                   
+    <form *ngIf="!loggedIn" 
+          #loginForm="ngForm" 
+          class="d-flex" 
+          (ngSubmit)="login()" 
+          autocomplete="off"
+        >
+        <input 
+            type="text" 
+            name="username"
+            [(ngModel)]="model.username"
+            class="form-control me-2" 
+            placeholder="Username"                 
+            >
+        <input 
+            type="password" 
+            name="password"
+            [(ngModel)]="model.password"
+            class="form-control me-2"
+            placeholder="Password" 
+            >
+        <button 
+            type="submit"
+            class="btn btn-outline-success" 
+            >Search</button>
+    </form>
+    </div>
+</nav>
