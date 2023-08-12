@@ -1,5 +1,7 @@
+using API.Data;
 using API.Extensions;
 using API.Middelware;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,5 +18,7 @@ app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHead
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+await Seed.InitDbAsync(app);
 
 app.Run();

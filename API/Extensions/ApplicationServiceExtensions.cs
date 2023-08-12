@@ -12,7 +12,9 @@ namespace API.Extensions
         {
             return services.AddDbContext<DataContext>(opt => opt.UseSqlite(config.GetConnectionString("DefaultConnection")))
                            .AddCors()
-                           .AddScoped<ITokenService, TokenServices>();
+                           .AddScoped<ITokenService, TokenServices>()
+                           .AddScoped<IUserRepository, UserRepository>()
+                           .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }
 }
