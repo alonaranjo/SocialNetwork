@@ -4,20 +4,22 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
-import { DetailComponent } from './members/detail/detail.component';
-import { ListComponent } from './list/list.component';
-import { MessagesComponent } from './messages/messages.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { MemberListComponent } from './components/members/member-list/member-list.component';
+import { DetailComponent } from './components/members/detail/detail.component';
+import { ListComponent } from './components/list/list.component';
+import { MessagesComponent } from './components/messages/messages.component';
 import { SharedModule } from './_modules/shared/shared.module';
-import { TestErrorComponent } from './errors/test-error/test-error.component';
+import { TestErrorComponent } from './components/errors/test-error/test-error.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { ServerErrorComponent } from './components/errors/server-error/server-error.component';
+import { MemberCardComponent } from './components/members/member-card/member-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
-    DetailComponent,
     ListComponent,
     MessagesComponent,
     TestErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,7 +44,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     SharedModule    
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

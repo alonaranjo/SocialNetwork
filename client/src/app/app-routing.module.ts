@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { MessagesComponent } from './messages/messages.component';
-import { ListComponent } from './list/list.component';
-import { DetailComponent } from './members/detail/detail.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
+import { HomeComponent } from './components/home/home.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { ListComponent } from './components/list/list.component';
+import { DetailComponent } from './components/members/detail/detail.component';
+import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { authGuard } from './_guards/auth.guard';
-import { TestErrorComponent } from './errors/test-error/test-error.component';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { TestErrorComponent } from './components/errors/test-error/test-error.component';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { ServerErrorComponent } from './components/errors/server-error/server-error.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: "members", component: MemberListComponent },
-      { path: "members/:id", component: DetailComponent },
+      { path: "members/:username", component: DetailComponent },
       { path: "list", component: ListComponent },
       { path: "messages", component: MessagesComponent }      
     ]
