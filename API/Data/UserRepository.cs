@@ -16,19 +16,20 @@ namespace API.Data
             _context = context; 
             _mapper = mapper;          
         }
-        public async Task<AppUser> GetUserByIdAsync(int id)
+        
+        public async Task<AppUser> GetUserByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.Users.FindAsync(id, cancellationToken);
         }
 
-        public async Task<AppUser> GetUserByUserNameAsync(string username)
+        public async Task<AppUser> GetUserByUserNameAsync(string username, CancellationToken cancellationToken = default)
         {
-            return await _context.Users.Include(x => x.Photos).SingleOrDefaultAsync(x => x.UserName == username);
+            return await _context.Users.Include(x => x.Photos).SingleOrDefaultAsync(x => x.UserName == username, cancellationToken);
         }
 
-        public async Task<IEnumerable<AppUser>> GetUsersAsync()
+        public async Task<IEnumerable<AppUser>> GetUsersAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Users.Include(x => x.Photos).ToListAsync();
+            return await _context.Users.Include(x => x.Photos).ToListAsync(cancellationToken);
         }
 
         public async Task<bool> SaveAllAsync()
@@ -41,21 +42,21 @@ namespace API.Data
             _context.Entry(user).State = EntityState.Modified;
         }
 
-        public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync(CancellationToken cancellationToken = default)
         {
              return await _context
                         .Users
                         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                        .ToListAsync();
+                        .ToListAsync(cancellationToken);
         }
 
-        public async Task<MemberDto> GetMemberAsync(string userName)
+        public async Task<MemberDto> GetMemberAsync(string userName, CancellationToken cancellationToken = default)
         {
             return await _context
                         .Users
                         .Where(x => x.UserName == userName)
                         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                        .SingleOrDefaultAsync();
+                        .SingleOrDefaultAsync(cancellationToken);
         }
     }
 }

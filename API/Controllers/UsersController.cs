@@ -20,18 +20,17 @@ namespace API.Controllers
             _userRepository = userRepository;
         }  
 
-        [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers(CancellationToken cancellationToken = default) 
         {
-            var users = await _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync(cancellationToken);
             return Ok(users);
         }     
 
         [HttpGet("{username}")]
-        public async Task<ActionResult<MemberDto>> GetUser(string username)
+        public async Task<ActionResult<MemberDto>> GetUser(string username, CancellationToken cancellationToken = default)
         {
-           return await _userRepository.GetMemberAsync(username);
+           return await _userRepository.GetMemberAsync(username, cancellationToken);
         } 
     }
 }
