@@ -17,17 +17,15 @@
             <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
         </li>
     </ul>   
-    <div class="nav-item dropdown" 
-         *ngIf="(accountService.currentUser$ | async) as user"
-         dropdown >
-        <a class="nav-link dropdown-toggle" 
+    <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown >
+        <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.userName}}">
+        <a class="dropdown-toggle text-light text-decoration-none ms-2" 
             dropdownToggle  
             id="navbarDropdown" 
             role="button" 
             data-toggle="dropdown" 
             aria-haspopup="true" 
-            aria-expanded="false"
-            >
+            aria-expanded="false">
             Welcome {{ user.userName | titlecase}}
         </a>
         <div class="dropdown-menu" 

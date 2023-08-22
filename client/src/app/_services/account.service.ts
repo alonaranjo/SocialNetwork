@@ -17,25 +17,21 @@ export class AccountService {
 
   login(model: any){ 
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
-      map(user => this.setData(user))
+      map(user => this.setCurrentUser(user))
     )
   }
 
   register(model: any){ 
     return this.http.post<User>(this.baseUrl + "account/register", model).pipe(
-      map(user => this.setData(user))
+      map(user => this.setCurrentUser(user))
     )
   }
   
-  setData(user: User){
-    if (user){
+  setCurrentUser(user: User){
+    if(user){
       localStorage.setItem("user", JSON.stringify(user));
       this.currentUserSource.next(user);
-    }
-  }
-
-  setCurrentUser(user: User){
-    this.currentUserSource.next(user);
+    }    
   }
 
   logout(){ 
