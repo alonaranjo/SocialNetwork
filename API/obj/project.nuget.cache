@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yIrbCnGojYDi8+aE1U3UOGyJ4rtnYqRuBc4yJZmr5ADMhrVBvwW9/RJsS6FEcwdRkZynCrsp/q5dIn1jIeAhug==",
+  "dgSpecHash": "IesbJ3CCFzEcGprplLPFpxt6xxoGyN6IMYC18hiFgIovoBttuvzfeQdDVmATeqzNJOn0UzRURCbDUI3mNdpPPA==",
   "success": true,
-  "projectFilePath": "C:\\SocialNetwork\\api\\API.csproj",
+  "projectFilePath": "c:\\SocialNetwork\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alons\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\alons\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

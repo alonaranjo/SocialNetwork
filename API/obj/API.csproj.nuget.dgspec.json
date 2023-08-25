@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SocialNetwork\\api\\API.csproj": {}
+    "c:\\SocialNetwork\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\SocialNetwork\\api\\API.csproj": {
+    "c:\\SocialNetwork\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SocialNetwork\\api\\API.csproj",
+        "projectUniqueName": "c:\\SocialNetwork\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\SocialNetwork\\api\\API.csproj",
+        "projectPath": "c:\\SocialNetwork\\API\\API.csproj",
         "packagesPath": "C:\\Users\\alons\\.nuget\\packages\\",
-        "outputPath": "C:\\SocialNetwork\\api\\obj\\",
+        "outputPath": "c:\\SocialNetwork\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alons\\AppData\\Roaming\\NuGet\\NuGet.Config"
