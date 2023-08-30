@@ -1,5 +1,6 @@
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -42,12 +43,18 @@ namespace API.Data
             _context.Entry(user).State = EntityState.Modified;
         }
 
-        public async Task<IEnumerable<MemberDto>> GetMembersAsync(CancellationToken cancellationToken = default)
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, CancellationToken cancellationToken = default)
         {
-             return await _context
-                        .Users
-                        .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                        .ToListAsync(cancellationToken);
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => u.UserName != userParams.CurrentUserName);
+            query = query.Where(u => u.Gender == userParams.Gender);
+            query = query.Where(u => u.DateOfBirth >= userParams.MinDob && u.DateOfBirth <= userParams.MaxDob);
+
+            return await PagedList<MemberDto>.CreateAsync(
+                query.AsNoTracking().ProjectTo<MemberDto>(_mapper.ConfigurationProvider), 
+                userParams.pageNumber, 
+                userParams.PageSize);            
         }
 
         public async Task<MemberDto> GetMemberAsync(string userName, CancellationToken cancellationToken = default)
