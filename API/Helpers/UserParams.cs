@@ -23,5 +23,6 @@ namespace API.Helpers
         {
             get => DateOnly.FromDateTime(DateTime.Today.AddYears(-MinAge));
         }
+        public string OrderBy { get; set; }
     }
 }
