@@ -1,9 +1,9 @@
 using API.DTOs;
-using API.Entities;
+using API.Data.Entities;
 using API.Extensions;
 using API.Helpers;
-using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using API.Data.Repositories.IRepositories;
 
 namespace API.Data
 {

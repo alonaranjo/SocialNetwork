@@ -1,7 +1,7 @@
 
 using CloudinaryDotNet.Actions;
 
-namespace API.Interfaces
+namespace API.BussinesLogic.Services.IServices
 {
     public interface IPhotoService
     {

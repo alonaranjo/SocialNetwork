@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
-using API.Errors;
+using API.BussinesLogic.Errors;
 
 namespace API.Middelware;
 

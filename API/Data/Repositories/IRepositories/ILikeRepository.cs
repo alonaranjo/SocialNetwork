@@ -1,9 +1,8 @@
-
-using API.DTOs;
-using API.Entities;
 using API.Helpers;
+using API.Data.Entities;
+using API.DTOs;
 
-namespace API.Interfaces
+namespace API.Data.Repositories.IRepositories
 {
     public interface ILikesRepository
     {

@@ -1,8 +1,9 @@
-
+using API.BussinesLogic.Services;
+using API.BussinesLogic.Services.IServices;
 using API.Data;
+using API.Data.Repositories;
+using API.Data.Repositories.IRepositories;
 using API.Helpers;
-using API.Interfaces;
-using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -19,7 +20,8 @@ namespace API.Extensions
                            .Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"))
                            .AddScoped<IPhotoService, PhotoService>()
                            .AddScoped<LogUserActivity>()
-                           .AddScoped<ILikesRepository, LikesRepository>();
+                           .AddScoped<ILikesRepository, LikesRepository>()
+                           .AddScoped<IMessageRepository, MessageRepository>();
         }
     }
 }

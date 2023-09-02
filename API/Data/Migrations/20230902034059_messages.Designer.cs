@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230902034059_messages")]
+    partial class messages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -75,8 +78,10 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Data.Entities.Message", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("SenderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RecipientId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
@@ -85,26 +90,21 @@ namespace API.Data.Migrations
                     b.Property<DateTime?>("DateRead")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("MessageSent")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("RecipientId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("RecipientUserName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SenderId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("SenderUserName")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("SenderId", "RecipientId");
 
                     b.HasIndex("RecipientId");
-
-                    b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
                 });

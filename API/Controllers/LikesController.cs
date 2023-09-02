@@ -1,11 +1,9 @@
-
-using API.Data;
 using API.DTOs;
-using API.Entities;
+using API.Data.Entities;
 using API.Extensions;
 using API.Helpers;
-using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using API.Data.Repositories.IRepositories;
 
 namespace API.Controllers
 {
@@ -24,9 +22,8 @@ namespace API.Controllers
         [HttpPost("{username}")]
         public async Task<ActionResult> AddLike(string username)
         {
-            var sourceUserId = User.GetUserId();
             var likedUser = await _userRepository.GetUserByUserNameAsync(username);
-            var sourceUser = await _likesRepository.GetUserWithLikes(sourceUserId);
+            var sourceUser = await _likesRepository.GetUserWithLikes(UserId);
 
             if(likedUser == null) 
             {
@@ -38,7 +35,7 @@ namespace API.Controllers
                 return BadRequest("You cannot like yourself");
             }
 
-            var userLike = await _likesRepository.GetUserLike(sourceUserId, likedUser.Id);
+            var userLike = await _likesRepository.GetUserLike(UserId, likedUser.Id);
 
             if(userLike != null)
             {
@@ -47,7 +44,7 @@ namespace API.Controllers
 
             sourceUser.LikedUsers.Add(new UserLike
             {
-                SourceUserId = sourceUserId,
+                SourceUserId = UserId,
                 TargetUserId = likedUser.Id
             });
 
@@ -62,10 +59,10 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedList<LikeDto>>> GetUserLikes ([FromQuery]LikesParams likesParams)
         {
-                likesParams.UserId = User.GetUserId();
-                var users = await _likesRepository.GetUserLikes(likesParams);
-                Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
-                return Ok(users);
+            likesParams.UserId = UserId;
+            var users = await _likesRepository.GetUserLikes(likesParams);
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
+            return Ok(users);
         }
 
     }

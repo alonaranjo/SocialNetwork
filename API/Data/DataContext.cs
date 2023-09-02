@@ -1,4 +1,4 @@
-using API.Entities;
+using API.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -13,10 +13,12 @@ namespace API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<AppUser>(entity => entity.HasIndex(e => e.UserName).IsUnique());
+            modelBuilder.Entity<AppUser>()
+                .HasIndex(e => e.UserName)
+                .IsUnique();
 
             modelBuilder.Entity<UserLike>()
-                .HasKey(k => new {k.SourceUserId, k.TargetUserId});
+                .HasKey(k => new { k.SourceUserId, k.TargetUserId });
 
             modelBuilder.Entity<UserLike>()
                 .HasOne(s => s.SourceUser)
@@ -29,9 +31,22 @@ namespace API.Data
                 .WithMany(l => l.LikedByUsers)
                 .HasForeignKey(s => s.TargetUserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(s => s.Recipient)
+                .WithMany(l => l.MessagesReceived)
+                .HasForeignKey(s => s.RecipientId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(s => s.Sender)
+                .WithMany(l => l.MessagesSent)
+                .HasForeignKey(s => s.SenderId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<AppUser> Users { get; set; }
         public DbSet<UserLike> Likes { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

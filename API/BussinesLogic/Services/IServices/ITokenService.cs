@@ -1,6 +1,6 @@
-using API.Entities;
+using API.Data.Entities;
 
-namespace API.Interfaces
+namespace API.BussinesLogic.Services.IServices
 {
     public interface ITokenService
     {

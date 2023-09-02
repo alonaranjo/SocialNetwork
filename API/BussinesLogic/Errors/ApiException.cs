@@ -1,4 +1,4 @@
-﻿namespace API.Errors;
+﻿namespace API.BussinesLogic.Errors;
 
 public class ApiException
 {

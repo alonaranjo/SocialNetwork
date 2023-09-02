@@ -2,11 +2,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using API.Entities;
-using API.Interfaces;
+using API.Data.Entities;
+using API.BussinesLogic.Services.IServices;
 using Microsoft.IdentityModel.Tokens;
 
-namespace API.Services
+namespace API.BussinesLogic.Services
 {
     public class TokenServices : ITokenService
     {
