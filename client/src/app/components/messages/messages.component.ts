@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from 'src/app/_models/pagination';
-import { Message } from 'src/app/_modules/shared/message';
+import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
 
 @Component({

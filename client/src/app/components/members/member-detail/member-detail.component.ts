@@ -8,7 +8,7 @@ import { Member } from 'src/app/_models/member';
 import { MembersService } from 'src/app/_services/members.service';
 import { MemberMessagesComponent } from '../member-messages/member-messages.component';
 import { MessageService } from 'src/app/_services/message.service';
-import { Message } from 'src/app/_modules/shared/message';
+import { Message } from 'src/app/_models/message';
 
 @Component({
   selector: 'app-detail',

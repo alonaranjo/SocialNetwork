@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
-import { Message } from '../_modules/shared/message';
+import { Message } from '../_models/message';
 
 @Injectable({
   providedIn: 'root'
