@@ -1,11 +1,11 @@
 using API.DTOs;
 using API.Data.Entities;
-using API.Extensions;
-using API.Helpers;
+using API.BussinesLogic.Extensions;
+using API.BussinesLogic.Helpers;
 using Microsoft.EntityFrameworkCore;
 using API.Data.Repositories.IRepositories;
 
-namespace API.Data
+namespace API.Data.Repositories
 {
     public class LikesRepository : ILikesRepository
     {

@@ -1,7 +1,7 @@
 using API.DTOs;
 using API.Data.Entities;
-using API.Extensions;
-using API.Helpers;
+using API.BussinesLogic.Extensions;
+using API.BussinesLogic.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using API.Data.Repositories.IRepositories;
 

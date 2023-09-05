@@ -1,4 +1,4 @@
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 using API.Data.Entities;
 using API.DTOs;
 

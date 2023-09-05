@@ -3,10 +3,10 @@ using API.BussinesLogic.Services.IServices;
 using API.Data;
 using API.Data.Repositories;
 using API.Data.Repositories.IRepositories;
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Extensions
+namespace API.BussinesLogic.Extensions
 {
     public static class ApplicationServiceExtensions
     {

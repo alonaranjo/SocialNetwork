@@ -1,8 +1,8 @@
 
 using System.Text.Json;
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 
-namespace API.Extensions
+namespace API.BussinesLogic.Extensions
 {
     public static class HttpExtensions
     {

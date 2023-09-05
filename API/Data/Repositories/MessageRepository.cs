@@ -1,7 +1,7 @@
 using API.Data.Entities;
 using API.Data.Repositories.IRepositories;
 using API.DTOs;
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;

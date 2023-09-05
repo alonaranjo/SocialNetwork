@@ -1,9 +1,9 @@
 using API.DTOs;
 using API.Data.Entities;
-using API.Extensions;
+using API.BussinesLogic.Extensions;
 using AutoMapper;
 
-namespace API.Helpers
+namespace API.BussinesLogic.Helpers
 {
     public class AutoMapperProfiles: Profile
     {

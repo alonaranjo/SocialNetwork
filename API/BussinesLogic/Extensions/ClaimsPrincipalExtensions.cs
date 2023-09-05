@@ -1,7 +1,7 @@
 
 using System.Security.Claims;
 
-namespace API.Extensions
+namespace API.BussinesLogic.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

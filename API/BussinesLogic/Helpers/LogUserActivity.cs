@@ -1,8 +1,8 @@
 using API.Data.Repositories.IRepositories;
-using API.Extensions;
+using API.BussinesLogic.Extensions;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace API.Helpers
+namespace API.BussinesLogic.Helpers
 {
     public class LogUserActivity : IAsyncActionFilter
     {

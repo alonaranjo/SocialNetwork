@@ -1,4 +1,4 @@
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 using API.BussinesLogic.Services.IServices;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;

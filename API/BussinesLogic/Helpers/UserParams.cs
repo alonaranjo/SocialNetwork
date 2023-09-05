@@ -1,5 +1,5 @@
 
-namespace API.Helpers
+namespace API.BussinesLogic.Helpers
 {
     public class UserParams: PaginationParams
     {

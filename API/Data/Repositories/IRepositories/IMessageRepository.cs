@@ -1,6 +1,6 @@
 using API.DTOs;
 using API.Data.Entities;
-using API.Helpers;
+using API.BussinesLogic.Helpers;
 
 namespace API.Data.Repositories.IRepositories
 {

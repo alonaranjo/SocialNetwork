@@ -1,5 +1,5 @@
 using API.Data;
-using API.Extensions;
+using API.BussinesLogic.Extensions;
 using API.Middelware;
 
 var builder = WebApplication.CreateBuilder(args);

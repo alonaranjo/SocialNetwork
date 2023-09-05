@@ -1,4 +1,4 @@
-namespace API.Extensions
+namespace API.BussinesLogic.Extensions
 {
     public static class DatetimeExtensions
     {

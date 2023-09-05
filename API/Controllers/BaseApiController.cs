@@ -1,6 +1,5 @@
-using API.Data.Migrations;
-using API.Extensions;
-using API.Helpers;
+using API.BussinesLogic.Extensions;
+using API.BussinesLogic.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

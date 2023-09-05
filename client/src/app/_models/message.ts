@@ -11,4 +11,4 @@ export interface Message {
     messageSent: string
     senderDeleted: boolean
     recipientDeleted: boolean
-  }
+}
