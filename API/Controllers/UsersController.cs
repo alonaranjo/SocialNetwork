@@ -28,7 +28,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams, CancellationToken cancellationToken = default) 
         {
-            var currentUser = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName);
+            var currentUser = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
             userParams.CurrentUserName = currentUser.UserName;
 
             if(string.IsNullOrEmpty(userParams.Gender))
@@ -50,7 +50,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
-            var user = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName);
+            var user = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
             if(user == null)
             {
                 return NotFound();
@@ -69,7 +69,7 @@ namespace API.Controllers
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
-            var user = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName);
+            var user = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
             if(user == null)
             {
                 return NotFound();
@@ -101,7 +101,7 @@ namespace API.Controllers
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
-            var user = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName);
+            var user = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
             if(user == null)
             {
                 return NotFound();
@@ -132,7 +132,7 @@ namespace API.Controllers
         [HttpDelete("delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
-            var user = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName);
+            var user = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
             if(user == null)
             {
                 return NotFound();

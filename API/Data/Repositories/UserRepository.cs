@@ -5,6 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using API.Data.Repositories.IRepositories;
+using System.Linq.Expressions;
 
 namespace API.Data.Repositories
 {
@@ -18,14 +19,9 @@ namespace API.Data.Repositories
             _mapper = mapper;          
         }
         
-        public async Task<AppUser> GetUserByIdAsync(int id, CancellationToken cancellationToken = default)
-        {
-            return await _context.Users.FindAsync(id, cancellationToken);
-        }
-
-        public async Task<AppUser> GetUserByUserNameAsync(string username, CancellationToken cancellationToken = default)
-        {
-            return await _context.Users.Include(x => x.Photos).SingleOrDefaultAsync(x => x.UserName == username, cancellationToken);
+        public async Task<AppUser> GetUserAsync(Expression<Func<AppUser, bool>> filter = null)
+        {        
+            return await _context.Users.Include(x => x.Photos).SingleOrDefaultAsync(filter);
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync(CancellationToken cancellationToken = default)
@@ -64,6 +60,16 @@ namespace API.Data.Repositories
                         .Where(x => x.UserName == userName)
                         .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                         .SingleOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task AddUserAsync(AppUser user)
+        {
+            await _context.Users.AddAsync(user);
+        }
+
+        public async Task<bool> UserExistsAsync(string username)
+        {
+            return await _context.Users.AnyAsync(x => x.UserName == username);
         }
     }
 }

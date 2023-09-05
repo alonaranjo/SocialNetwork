@@ -13,7 +13,7 @@ namespace API.Controllers
     {       
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        public MessageController(IUnitOfWork unitOfWork, IMapper mapper)
+        public MessageController(IUnitOfWork unitOfWork, IMapper mapper )
         {
             _unitOfWork = unitOfWork;          
             _mapper = mapper;
@@ -27,8 +27,8 @@ namespace API.Controllers
                 return BadRequest("You cannot send messages to yourself");
             }
 
-            var sender = await _unitOfWork.UserRepository.GetUserByUserNameAsync(UserName, cancellationToken);
-            var recipient = await _unitOfWork.UserRepository.GetUserByUserNameAsync(createMessageDto.RecipientUsername, cancellationToken);
+            var sender = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == UserName);
+            var recipient = await _unitOfWork.UserRepository.GetUserAsync(x => x.UserName == createMessageDto.RecipientUsername);
 
             if(recipient == null)
             {

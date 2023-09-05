@@ -13,7 +13,7 @@ namespace API.BussinesLogic.Helpers
            
            var userID = resultContext.HttpContext.User.GetUserId();
            var repo = resultContext.HttpContext.RequestServices.GetRequiredService<IUnitOfWork>();
-           var user = await repo.UserRepository.GetUserByIdAsync(userID);
+           var user = await repo.UserRepository.GetUserAsync(x => x.Id == userID);
            user.LastActive = DateTime.UtcNow;
            await repo.CompleteAsync();
         }
