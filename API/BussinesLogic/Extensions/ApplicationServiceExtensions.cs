@@ -13,13 +13,17 @@ namespace API.BussinesLogic.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             return services.AddDbContext<DataContext>(opt => opt.UseSqlite(config.GetConnectionString("DefaultConnection")))
-                           .AddCors()
-                           .AddScoped<ITokenService, TokenServices>()                           
-                           .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
-                           .Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"))
-                           .AddScoped<IPhotoService, PhotoService>()
+                           .Configure<CloudinarySettings>(config.GetSection("CloudinarySettings")) 
+                           .AddCors()                                                     
+                           .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())                                                     
                            .AddScoped<LogUserActivity>()
-                           .AddScoped<IUnitOfWork, UnitOfWork>();
+                           .AddScoped<IUnitOfWork, UnitOfWork>()
+                           .AddScoped<IPhotoService, PhotoService>()
+                           .AddScoped<ITokenService, TokenServices>() 
+                           .AddScoped<IAccountService, AccountService>() 
+                           .AddScoped<ILikeService, LikeService>() 
+                           .AddScoped<IMessageService, MessageService>() 
+                           .AddScoped<IUserService, UserService>(); 
         }
     }
 }

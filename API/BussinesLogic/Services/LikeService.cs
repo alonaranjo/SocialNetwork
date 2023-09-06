@@ -1,3 +1,4 @@
+using API.BussinesLogic.Extensions;
 using API.BussinesLogic.Helpers;
 using API.BussinesLogic.Services.IServices;
 using API.Data.Entities;
@@ -47,9 +48,12 @@ namespace API.BussinesLogic.Services
             }
         }
 
-        public async Task<PagedList<LikeDto>> GetUserLikes(LikesParams likesParams)
+        public async Task<PagedList<LikeDto>> GetUserLikes(LikesParams likesParams, int userId, HttpResponse response)
         {
-            return await _unitOfWork.LikesRepository.GetUserLikes(likesParams);
+            likesParams.UserId = userId;
+            var users = await _unitOfWork.LikesRepository.GetUserLikes(likesParams);
+            response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
+            return users;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace API.Data.Repositories.IRepositories
         Task AddUserAsync(AppUser user);
         Task<IEnumerable<AppUser>> GetUsersAsync(CancellationToken cancellationToken = default);        
         Task<AppUser> GetUserAsync(Expression<Func<AppUser, bool>> filter = null);
-        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, CancellationToken cancellationToken = default);
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string userName, CancellationToken cancellationToken = default);
         Task<bool> UserExistsAsync(string username);
     }

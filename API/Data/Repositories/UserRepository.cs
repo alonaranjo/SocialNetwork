@@ -34,7 +34,7 @@ namespace API.Data.Repositories
             _context.Entry(user).State = EntityState.Modified;
         }
 
-        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams, CancellationToken cancellationToken = default)
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
 
